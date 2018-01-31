@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+	<span>{{ title }}</span>
+	<span class="fill-remaining-space"></span>
+	<span><mat-icon class="mat-icon">verified_user</mat-icon></span>
+</mat-toolbar>
+ 
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+<mat-card>
+<agm-map [latitude]="lat" [longitude]="lng">
+	<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+</mat-card>
+
+<mat-grid-list cols="3" rowHeight="4:3" gutterSize="15px">
+	<mat-grid-tile layout-fill colspan="1"><mat-card>Hello</mat-card></mat-grid-tile>
+	<mat-grid-tile colspan="2"><mat-card>World</mat-card></mat-grid-tile>
+</mat-grid-list>

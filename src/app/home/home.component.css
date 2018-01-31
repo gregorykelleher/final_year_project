@@ -1,0 +1,11 @@
+agm-map {
+  height: 400px;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+mat-card {
+  flex: auto;
+}
