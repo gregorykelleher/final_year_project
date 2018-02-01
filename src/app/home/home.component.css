@@ -1,5 +1,5 @@
 agm-map {
-  height: 400px;
+  height: 100%;
 }
 
 .fill-remaining-space {
@@ -7,5 +7,6 @@ agm-map {
 }
 
 mat-card {
-  flex: auto;
+  width: 100%;
+  height: calc(100% - 70px);
 }
