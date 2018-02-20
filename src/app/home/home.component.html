@@ -1,18 +1,36 @@
 <mat-toolbar color="primary">
 	<span>{{ title }}</span>
 	<span class="fill-remaining-space"></span>
-	<span><mat-icon class="mat-icon">verified_user</mat-icon></span>
+	<span>
+		<button mat-icon-button [matMenuTriggerFor]="menu">
+			<mat-icon>more_vert</mat-icon>
+		</button>
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item>
+				<span>Hi Guest!</span>
+			</button>
+			<button mat-menu-item class="btn btn-default" (click)="logout()">
+				<mat-icon>exit_to_app</mat-icon>
+				<span>Exit</span>
+			</button>
+			<button mat-menu-item>
+				<mat-icon>code</mat-icon>
+				<span>Github</span>
+			</button>
+		</mat-menu>
+	</span>
 </mat-toolbar>
 
-<!-- this creates a google map on the page with the given lat/lng from -->
-<!-- the component as the initial center of the map: -->
-
-<mat-grid-list cols="1" rowHeight="5:1" gutterSize="15px">
-	<mat-grid-tile colspan="1" rowspan="2">
+<mat-grid-list cols="6" rowHeight="1:1.5" gutterSize="15px">
+	<mat-grid-tile colspan="4" rowspan="2">
 		<mat-card>
 			<agm-map [latitude]="lat" [longitude]="lng">
 				<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 			</agm-map>
+		</mat-card>
+	</mat-grid-tile>
+	<mat-grid-tile colspan="2" rowspan="2">
+		<mat-card>
 		</mat-card>
 	</mat-grid-tile>
 </mat-grid-list>
