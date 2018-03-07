@@ -27,6 +27,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
+import {MatListModule} from '@angular/material/list';
+import { HttpClient } from '@angular/common/http';
 
 // Routing
 import { AppRoutingModule }	from './app-routing.module';
@@ -38,16 +41,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 
 // Services
 import { AuthService } from './providers/auth.service';
-
-// Must export the config
-// export const firebaseConfig = {
-//   apiKey: 'AIzaSyAAXwHtCbeZl0RmUYloYzDyo1p87UwJkig',
-//   authDomain: 'finalyearprojectangular.firebaseapp.com',
-//   databaseURL: 'https://finalyearprojectangular.firebaseio.com',
-//   projectId: "finalyearprojectangular",
-//   storageBucket: "",
-//   messagingSenderId: "128876658513"
-// };
+import { LocationService } from './providers/location.service';
 
 @NgModule({
 	declarations: [
@@ -56,12 +50,15 @@ import { AuthService } from './providers/auth.service';
 	LoginPageComponent
 	],
 	imports: [
+	HttpClientModule,
 	MatToolbarModule,
+	MatTableModule,
 	MatIconModule,
 	MatButtonModule,
 	MatCardModule,
 	MatMenuModule,
 	MatTabsModule,
+	MatListModule,
 	BrowserAnimationsModule,
 	MatDatepickerModule,
 	MatFormFieldModule,
@@ -77,7 +74,7 @@ import { AuthService } from './providers/auth.service';
 		apiKey: 'AIzaSyDlsj9CHvZ1bq9LdC9YOAQJ1qaYNDcUe04'
 	})
 	],
-	providers: [AuthService],
+	providers: [AuthService, LocationService ],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
