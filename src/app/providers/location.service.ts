@@ -4,39 +4,16 @@ import 'rxjs/add/operator/map';
 import { HttpClient }   from '@angular/common/http';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 
-// export interface Location {
-//     name: string;
-//     email: string;
-//     phone: string;
-//     company: {
-//         name: string;
-//     }
-// }
-
-export interface Location {
-    lat: string;
-}
-
 @Injectable()
 export class LocationService {
 	items: Observable<any>;
+	dbRef: any;
 
-	constructor(db: AngularFireDatabase) {
-		this.items = db.list('/Location_Details', ref => ref.limitToFirst(10)).valueChanges();
+	constructor(private db: AngularFireDatabase) {
+		this.dbRef = this.db.list('Gen_Map_Data');
+		this.items = this.dbRef.valueChanges();
 	}
 	getLoc() {
 		return this.items;
 	}
 }
-
-// export class LocationService {
-	
-// 	private serviceUrl = 'https://jsonplaceholder.typicode.com/users';
-
-// 	constructor(private http: HttpClient) { }
-
-// 	getLoc(): Observable<Location[]> {
-// 		return this.http.get<Location[]>(this.serviceUrl);
-// 	}
-
-// }

@@ -10,3 +10,8 @@ mat-card {
   width: 100%;
   height: calc(100% - 70px);
 }
+
+.mat-table {
+  overflow: auto;
+  max-height: 550px;
+}
