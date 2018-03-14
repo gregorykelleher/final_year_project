@@ -22,49 +22,47 @@
 </mat-toolbar>
 
 <mat-grid-list cols="6" rowHeight="1:1.5" gutterSize="15px">
+
 	<mat-grid-tile colspan="4" rowspan="2">
 		<mat-card>
 			<agm-map [latitude]="map_lat" [longitude]="map_long" [zoom]="map_zoom">
-				<agm-marker
-				*ngFor="let marker of markers | async"
-				[latitude]="marker.latitude"
-				[longitude]="marker.longitude"
-				[label]="marker.label">
-				<agm-info-window>
-					<strong> {{ marker.time }} </strong>
-				</agm-info-window>
-			</agm-marker>
-			<agm-circle [latitude]="map_lat" [longitude]="map_long" 
-			[radius]="200"
-			[fillColor]="'red'"
-			[circleDraggable]="false"
-			[editable]="false">
-		</agm-circle>
-	</agm-map>
-</mat-card>
-</mat-grid-tile>
+				<agm-marker *ngFor="let marker of markers | async" [latitude]="marker.latitude" [longitude]="marker.longitude" [label]="marker.label">
+					<agm-info-window>
+						<strong>Time:</strong>
+						<p> {{ marker.time }} </p>
+					</agm-info-window>
+				</agm-marker>
+				<agm-circle [latitude]="map_lat" [longitude]="map_long" [radius]="200" [fillColor]="'red'" [circleDraggable]="true" [editable]="true">
+				</agm-circle>
+			</agm-map>
+		</mat-card>
+	</mat-grid-tile>
 
-<mat-grid-tile colspan="2" rowspan="2">
-	<mat-card>
-
-		<mat-table [dataSource]="dataSource">
-			<ng-container matColumnDef="lat">
-				<mat-header-cell *matHeaderCellDef> Latitude </mat-header-cell>
-				<mat-cell *matCellDef="let location"> {{ location.latitude }} </mat-cell>
-			</ng-container>
-			<ng-container matColumnDef="long">
-				<mat-header-cell *matHeaderCellDef> Longitude </mat-header-cell>
-				<mat-cell *matCellDef="let location"> {{ location.longitude }} </mat-cell>
-			</ng-container>
-			<ng-container matColumnDef="time">
-				<mat-header-cell *matHeaderCellDef> Time </mat-header-cell>
-				<mat-cell *matCellDef="let location"> {{ location.time }} </mat-cell>
-			</ng-container>
-			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-		</mat-table>
-
-	</mat-card>
-</mat-grid-tile>
+	<mat-grid-tile colspan="2" rowspan="2">
+		<mat-card>
+			<mat-tab-group md-stretch-tabs="always">
+				<mat-tab label="Locations">
+					<mat-table [dataSource]="dataSource">
+						<ng-container matColumnDef="no">
+							<mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+							<mat-cell *matCellDef="let location"> {{ location.no }} </mat-cell>
+						</ng-container>
+						<ng-container matColumnDef="lat">
+							<mat-header-cell *matHeaderCellDef> Latitude </mat-header-cell>
+							<mat-cell *matCellDef="let location"> {{ location.latitude }} </mat-cell>
+						</ng-container>
+						<ng-container matColumnDef="long">
+							<mat-header-cell *matHeaderCellDef> Longitude </mat-header-cell>
+							<mat-cell *matCellDef="let location"> {{ location.longitude }} </mat-cell>
+						</ng-container>
+						<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+						<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+					</mat-table>
+				</mat-tab>
+				<mat-tab label="Alerts">
+				</mat-tab>
+			</mat-tab-group>
+		</mat-card>
+	</mat-grid-tile>
 </mat-grid-list>
 

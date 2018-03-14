@@ -29,14 +29,14 @@ export class HomeComponent implements OnInit {
 	// google maps
 	map_lat: number = 53.3783647;
 	map_long: number = -6.5869683;
-	map_zoom: number = 15;
+	map_zoom: number = 16;
 
 	markers : Observable<any[]>;
 	marker_lat: number;
 	marker_long: number;
 
 	dataSource = new LocDataSource(this.locationService);
-	displayedColumns = ['lat', 'long', 'time'];
+	displayedColumns = ['no', 'lat', 'long' ];
 
 	private _isLoggedIn: Boolean;
 	private _user_displayName: String;
